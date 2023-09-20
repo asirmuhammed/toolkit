@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="description">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Title Of Site -->
+        <title>toolkit</title>
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{% static 'web/images/favicon.png' %}" />
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" href="{% static 'web/css/plugins.css' %}">
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" href="{% static 'web/css/style-min.css' %}">
+        <link rel="stylesheet" href="{% static 'web/css/responsive.css' %}">
+    </head>
+
+    <body class="template-index index-demo5">
+        <!--Scoll Top-->
+        <div id="site-scroll"><i class="icon anm anm-arw-up"></i></div>
+        <!--End Scoll Top-->
+
+        {% include 'web/partials/header.html' %}
+        {% block content %}
+        {% endblock content %}
+        {% include 'web/partials/footer.html' %}
+            
+
+        <!-- Including Jquery/Javascript -->
+            <!-- Plugins JS -->
+            <script src="{% static 'web/js/plugins.js' %}"></script>
+            <!-- Main JS -->
+            <script src="{% static 'web/js/main.js' %}"></script>
+
+            <!--Newsletter Modal Cookies-->
+            <script>
+                $(window).ready(function () {
+                    setTimeout(function () {
+                        $('#newsletter_modal').modal("show");
+                    }, 7000);
+                });
+            </script>
+            <!--End Newsletter Modal Cookies-->
+
+        </div>
+        <!--End Page Wrapper-->
+    </body>
+</html>
