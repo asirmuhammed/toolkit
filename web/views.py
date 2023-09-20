@@ -8,11 +8,13 @@ from .forms import ContactForm
 from .models import Blog
 from .models import Gallery
 from .models import Category
+from .models import Product
 
 def index(request):
     context = {"is_index": True,
                'blog':Blog.objects.all(),
-               'category':Category.objects.all()}
+               'category':Category.objects.all(),
+               'product':Product.objects.all()}
     return render(request, "web/index.html", context)
 
 
@@ -21,7 +23,8 @@ def about(request):
     return render(request, "web/about.html", context)
 
 def product(request):
-    context = {"is_product": True}
+    context = {"is_product": True,
+               'product':Product.objects.all(),}
     return render(request, "web/product.html", context)
 
 def blog(request):
@@ -67,3 +70,28 @@ def gallery(request):
     context = {"is_gallery": True,
                'gallery':Gallery.objects.all(),}
     return render(request, "web/gallery.html", context)
+
+
+def categories(request,id):
+    category = get_object_or_404(Category, id=id)
+    
+    # Retrieve products that belong to the selected category
+    products = Product.objects.filter(category=category)
+    
+    context = {
+        'category': category,
+        'products': products,
+    }
+    
+    return render(request,'web/categories.html',context)
+
+# def product_detail(request, id):
+#     product =Product.objects.get(id=id)
+#     context = {'product': product}
+#     return render(request, 'web/product-detail.html', context)
+
+def product_detail(request):
+    context = {}
+    return render(request, 'web/product-detail.html', context)
+
+

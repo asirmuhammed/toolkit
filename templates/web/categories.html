@@ -1,12 +1,7 @@
-{% extends "web/partials/base.html" %}
-{% load static %}
+{% extends "web/partials/base.html" %} 
+{% load static %} 
 {% block content %}
 
-
-
-        <!--Page Wrapper-->
-        <div class="page-wrapper">
-            
             <!-- Body Container -->
             <div id="page-content">
                 <!--Page Header-->
@@ -14,7 +9,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between align-items-center">
-                                <div class="page-title"><h1>Shop Grid View</h1></div>
+                                <div class="page-title"><h1>{{category.category_title}}</h1></div>
                                 <!--Breadcrumbs-->
                                 <div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a><span class="title"><i class="icon anm anm-angle-right-l"></i>Shop</span><span class="main-title"><i class="icon anm anm-angle-right-l"></i>Shop Grid View</span></div>
                                 <!--End Breadcrumbs-->
@@ -26,11 +21,8 @@
 
                 <!--Main Content-->
                 <div class="container">
-                    
-
-                    
-
-                    
+                    <div class="row">
+                        
 
                         <!--Products-->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
@@ -1257,5 +1249,6 @@
             <!-- End Body Container -->
 
             
+
+
 {% endblock content %}
-            

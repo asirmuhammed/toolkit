@@ -32,19 +32,24 @@ class Gallery (models.Model):
     
     
 class Category(models.Model):
-    Category_image=models.ImageField()
-    Category_title=models.CharField(max_length=30)
-    Category_product_no=models.CharField(max_length=30)
+    category_image=models.ImageField()
+    category_title=models.CharField(max_length=30)
+    category_product_no=models.CharField(max_length=30)
     
     
-def __str__(self):
-    return self.Category_title
+    def __str__(self):
+        return self.category_title
+    
 
 
 class Product(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     product_name=models.CharField(max_length=40)
     product_image=models.ImageField()
     product_price=models.CharField(max_length=30)
+    product_del_price=models.CharField(max_length=30)
+    
+    
     
     
     def __str__(self):
