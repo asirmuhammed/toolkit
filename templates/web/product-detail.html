@@ -1,10 +1,128 @@
-{% extends "web/partials/base.html" %} 
-{% load static %} 
-{% block content %}
+
+{% load static %}
 
 
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="description">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Title Of Site -->
+        <title></title>
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{% static 'web/images/favicon.png' %}" />
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" href="{% static 'web/css/plugins.css' %}">
+        <!-- Photoswipe Gallery CSS -->
+        <link rel="stylesheet" href="{% static 'web/css/vendor/photoswipe.min.css' %}">
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" href="{% static 'web/css/style-min.css' %}">
+        <link rel="stylesheet" href="{% static 'web/css/responsive.css' %}">
+    </head>
+
+    <body class="template-product product-layout7">
         <!--Page Wrapper-->
         <div class="page-wrapper">
+            <!--Header-->
+<header class="header mih-75 d-flex align-items-center header-5 header-fixed">
+    <div class="container-fluid">        
+        <div class="row">
+            <!--Logo-->
+            <div class="logo col-4 col-sm-4 col-md-4 col-lg-1 col-xxl-1 align-self-center">
+                <a class="logoImg" href="index.html"><img src="{% static 'web/images/logo-tools.png' %}" alt="Hema Multipurpose Html Template" title="Hema Multipurpose Html Template" width="149" height="39" /></a>
+            </div>
+            <!--End Logo-->
+            <!--Menu-->
+            <div class="col-1 col-sm-1 col-md-1 col-lg-6 col-xxl-6 align-self-center d-menu-col hdr-menu-left menu-position-left">
+                <nav class="navigation ps-lg-4 ps-xl-3" id="AccessibleNav">
+                    <ul id="siteNav" class="site-nav medium right">
+                        <li class="lvl1 parent dropdown"><a href="{% url 'web:index' %}">Home </a>
+                            
+                        </li>
+                        <li class="lvl1 parent megamenu"><a href="{% url 'web:about' %}">About </a>
+                            
+                        </li>
+                        <li class="lvl1 parent megamenu"><a href="{% url 'web:product' %}">Products </a>
+                            
+                        </li>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'web:blog' %}">Updates </a>
+                            
+                        </li>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'web:gallery' %}">gallery</a>
+                        </li>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'web:contact' %}">Contact </a>
+                            
+                        </li>
+                       
+                        
+                        
+                    </ul>
+                </nav>
+            </div>
+            <!--End Menu-->
+            <!--Right Icon-->
+            <div class="col-8 col-sm-8 col-md-8 col-lg-5 col-xxl-5 align-self-center icons-col text-right">
+                
+                
+               
+                
+                <!--Minicart-->
+                <div class="header-cart iconset" title="Cart">
+                    <a href="#;" class="header-cart btn-minicart clr-none" data-bs-toggle="offcanvas" data-bs-target="#minicart-drawer"><i class="hdr-icon icon anm anm-cart-l"></i><span class="cart-count">3</span></a>
+                </div>
+                <!--End Minicart-->
+                <!--Mobile Toggle-->
+                <button type="button" class="iconset pe-0 menu-icon js-mobile-nav-toggle mobile-nav--open d-lg-none" title="Menu"><i class="hdr-icon icon anm anm-times-l"></i><i class="hdr-icon icon anm anm-bars-r"></i></button>
+                <!--End Mobile Toggle-->
+            </div>
+            <!--End Right Icon-->
+        </div>
+    </div>
+</header>
+<!--End Header-->
+<!--Mobile Menu-->
+<div class="mobile-nav-wrapper mobileMenu-bg-black" role="navigation">
+    <div class="closemobileMenu">Close Menu <i class="icon anm anm-times-l"></i></div>
+    <ul id="MobileNav" class="mobile-nav">
+        <li class="lvl1 parent dropdown"><a href="{% url 'web:index' %}">Home </a>
+            
+        </li>
+        <li class="lvl1 parent megamenu"><a href="{% url 'web:about' %}">About </a>
+            
+        </li>
+        <li class="lvl1 parent megamenu"><a href="{% url 'web:product' %}">Product </a>
+            
+        </li>
+        <li class="lvl1 parent dropdown"><a href="{% url 'web:blog' %}">updates </a>
+            
+        </li>
+        <li class="lvl1 parent dropdown"><a href="{% url 'web:gallery' %}">Gallery </a>
+            
+        </li>
+        <li class="lvl1 parent dropdown"><a href="{% url 'web:contact' %}">Contact</a>
+        </li>
+
+        <li class="mobile-menu-bottom">
+            
+            <div class="mobile-follow mt-2">  
+                <h5 class="title">Follow Us</h5>
+                <ul class="list-inline social-icons d-inline-flex mt-1">
+                    <li class="list-inline-item"><a href="#" title="Facebook"><i class="icon anm anm-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="#" title="Twitter"><i class="icon anm anm-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" title="Pinterest"><i class="icon anm anm-pinterest-p"></i></a></li>
+                    <li class="list-inline-item"><a href="#" title="Linkedin"><i class="icon anm anm-linkedin-in"></i></a></li>
+                    <li class="list-inline-item"><a href="#" title="Instagram"><i class="icon anm anm-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#" title="Youtube"><i class="icon anm anm-youtube"></i></a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--End Mobile Menu-->
+            
+
             <!-- Body Container -->
             <div id="page-content"> 
                 <!--Page Header-->
@@ -13,7 +131,7 @@
                         <div class="row align-items-center">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <!--Breadcrumbs-->
-                                <div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a><span class="main-title fw-bold"><i class="icon anm anm-angle-right-l"></i>Product Layout5</span></div>
+                                <div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a><span class="main-title fw-bold"><i class="icon anm anm-angle-right-l"></i>Product Layout7</span></div>
                                 <!--End Breadcrumbs-->
                             </div>
                         </div>
@@ -26,314 +144,342 @@
                     <!--Product Content-->
                     <div class="product-single">
                         <div class="row">
-                            <div class="col-lg-9 col-md-12 col-sm-12 col-12 product-layout-img-info">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 product-layout-img mb-4 mb-md-0">
-                                        <!-- Product Horizontal -->
-                                        <div class="product-details-img product-horizontal-style">
-                                            <!-- Product Main -->
-                                            <div class="zoompro-wrap rounded-0">
-                                                <!-- Product Image -->
-                                                <div class="zoompro-span"><img id="zoompro" class="zoompro rounded-0" src="assets/images/products/product1.jpg" data-zoom-image="assets/images/products/product1.jpg" alt="product" width="625" height="808" /></div>
-                                                <!-- End Product Image -->
-                                                <!-- Product Label -->
-                                                <div class="product-labels"><span class="lbl pr-label4">Best seller</span></div>
-                                                <!-- End Product Label -->
-                                                <!-- Product Buttons -->
-                                                <div class="product-buttons">
-                                                    <a href="#productVideo-modal" class="btn popup-video" data-bs-toggle="modal" data-bs-target="#productVideo_modal">
-                                                        <span class="icon-wrap d-flex-justify-center h-100 w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Watch Video"><i class="icon anm anm-video-r"></i></span>
-                                                    </a>
-                                                    <a href="#" class="btn prlightbox" data-bs-toggle="tooltip" data-bs-placement="top" title="Zoom Image"><i class="icon anm anm-expand-l-arrows"></i></a>
-                                                </div>
-                                                <!-- End Product Buttons -->
-                                            </div>
-                                            <!-- End Product Main -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 product-layout-img mb-4 mb-md-0">
+                                <div class="product-sticky-style">
+                                    <!-- Product Horizontal -->
+                                    <div class="product-details-img product-thumb-left-style product-thumb-right-style d-flex flex-row-reverse">
+                                        
 
-                                            <!-- Product Thumb -->
-                                            <div class="product-thumb product-horizontal-thumb mt-3">
-                                                <div id="gallery" class="product-thumb-horizontal">
-                                                    <a data-image="assets/images/products/product1.jpg" data-zoom-image="assets/images/products/product1.jpg" class="slick-slide slick-cloned active">
-                                                        <img class="blur-up lazyload rounded-0" data-src="assets/images/products/product1.jpg" src="assets/images/products/product1.jpg" alt="product" width="625" height="808" />
-                                                    </a>
-                                                    <a data-image="assets/images/products/product1-1.jpg" data-zoom-image="assets/images/products/product1-1.jpg" class="slick-slide slick-cloned">
-                                                        <img class="blur-up lazyload rounded-0" data-src="assets/images/products/product1-1.jpg" src="assets/images/products/product1-1.jpg" alt="product" width="625" height="808" />
-                                                    </a>
-                                                    <a data-image="assets/images/products/product1-2.jpg" data-zoom-image="assets/images/products/product1-2.jpg" class="slick-slide slick-cloned">
-                                                        <img class="blur-up lazyload rounded-0" data-src="assets/images/products/product1-2.jpg" src="assets/images/products/product1-2.jpg" alt="product" width="625" height="808" />
-                                                    </a>
-                                                    <a data-image="assets/images/products/product1-3.jpg" data-zoom-image="assets/images/products/product1-3.jpg" class="slick-slide slick-cloned">
-                                                        <img class="blur-up lazyload rounded-0" data-src="assets/images/products/product1-3.jpg" src="assets/images/products/product1-3.jpg" alt="product" width="625" height="808" />
-                                                    </a>
-                                                    <a data-image="assets/images/products/product1-4.jpg" data-zoom-image="assets/images/products/product1-4.jpg" class="slick-slide slick-cloned">
-                                                        <img class="blur-up lazyload rounded-0" data-src="assets/images/products/product1-4.jpg" src="assets/images/products/product1-4.jpg" alt="product" width="625" height="808" />
-                                                    </a>
-                                                    <a data-image="assets/images/products/product1-5.jpg" data-zoom-image="assets/images/products/product1-5.jpg" class="slick-slide slick-cloned">
-                                                        <img class="blur-up lazyload rounded-0" data-src="assets/images/products/product1-5.jpg" src="assets/images/products/product1-5.jpg" alt="product" width="625" height="808" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- End Product Thumb -->
-
-                                            <!-- Product Gallery -->
-                                            <div class="lightboximages">
-                                                <a href="assets/images/products/product1.jpg" data-size="1000x1280"></a>
-                                                <a href="assets/images/products/product1-1.jpg" data-size="1000x1280"></a>
-                                                <a href="assets/images/products/product1-2.jpg" data-size="1000x1280"></a>
-                                                <a href="assets/images/products/product1-3.jpg" data-size="1000x1280"></a>
-                                                <a href="assets/images/products/product1-4.jpg" data-size="1000x1280"></a>
-                                                <a href="assets/images/products/product1-5.jpg" data-size="1000x1280"></a>
-                                            </div>
-                                            <!-- End Product Gallery -->
+                                        <!-- Product Main -->
+                                        <div class="zoompro-wrap product-zoom-right">
+                                            <!-- Product Image -->
+                                            <div class="zoompro-span"><img id="zoompro" class="zoompro" src="{{product.product_image.url}}" data-zoom-image="{{product.product_image.url}}" alt="product" width="625" height="808" /></div>
+                                            <!-- End Product Image -->
+                                            
                                         </div>
-                                        <!-- End Product Horizontal -->
+                                        <!-- End Product Main -->
+
+                                        <!-- Product Gallery -->
+                                        <div class="lightboximages">
+                                            <a href="{% static 'web/images/products/product2.jpg' %}" data-size="1000x1280"></a>
+                                            <a href="{% static 'web/images/products/product2-1.jpg' %}" data-size="1000x1280"></a>
+                                            <a href="{% static 'web/images/products/product2-2.jpg' %}" data-size="1000x1280"></a>
+                                            <a href="{% static 'web/images/products/product2-3.jpg' %}" data-size="1000x1280"></a>
+                                            <a href="{% static 'web/images/products/product2-4.jpg' %}" data-size="1000x1280"></a>
+                                            <a href="{% static 'web/images/products/product2-5.jpg' %}" data-size="1000x1280"></a>
+                                        </div>
+                                        <!-- End Product Gallery -->
                                     </div>
+                                    <!-- End Product Horizontal -->
 
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 product-layout-info">
-                                        <!-- Product Details -->
-                                        <div class="product-single-meta">
-                                            <h2 class="product-main-title">Product Layout Style5</h2>
-                                            <!-- Product Reviews -->
-                                            <div class="product-review d-flex-center mb-3">
-                                                <div class="reviewStar d-flex-center"><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star-o"></i><span class="caption ms-2">8 Reviews</span></div>
-                                                <a class="reviewLink d-flex-center" href="#reviews">Write a Review</a>
-                                            </div>
-                                            <!-- End Product Reviews -->
-                                            <!-- Product Price -->
-                                            <div class="product-price d-flex-center my-3">
-                                                <span class="price">$179.00</span>
-                                            </div>
-                                            <!-- End Product Price -->
-                                            <!-- Product Info -->
-                                            <div class="product-info">
-                                                <p class="product-stock d-flex">Availability:
-                                                    <span class="pro-stockLbl ps-0">
-                                                        <span class="d-flex-center stockLbl instock text-uppercase">In stock</span>
-                                                    </span>
-                                                </p>
-                                                <p class="product-vendor">Vendor:<span class="text"><a href="#">HV</a></span></p>  
-                                                <p class="product-type">Product Type:<span class="text">Jeans</span></p> 
-                                                <p class="product-sku">SKU:<span class="text">RT12456</span></p>
-                                            </div>
-                                            <!-- End Product Info -->
-                                            <!-- Product Info -->
-                                            <div class="userViewMsg featureText mt-3" data-user="20" data-time="11000"><i class="icon anm anm-eye-r"></i><b class="uersView">21</b> People are Looking for this Product</div> 
-                                            <div class="shippingMsg featureText"><i class="icon anm anm-clock-r"></i>Estimated Delivery Between <b id="fromDate">Wed, May 1</b> and <b id="toDate">Tue, May 7</b>.</div>
-                                            <!-- End Product Info -->
+                                    <!-- Social Sharing -->
+                                    <div class="social-sharing d-flex-center justify-content-center mt-3 mt-md-4 lh-lg">
+                                        <span class="sharing-lbl fw-600">Share :</span>
+                                        <a href="#" class="d-flex-center btn btn-link btn--share share-facebook"><i class="icon anm anm-facebook-f"></i><span class="share-title">Facebook</span></a>
+                                        <a href="#" class="d-flex-center btn btn-link btn--share share-twitter"><i class="icon anm anm-twitter"></i><span class="share-title">Tweet</span></a>
+                                        <a href="#" class="d-flex-center btn btn-link btn--share share-pinterest"><i class="icon anm anm-pinterest-p"></i> <span class="share-title">Pin it</span></a>
+                                        <a href="#" class="d-flex-center btn btn-link btn--share share-linkedin"><i class="icon anm anm-linkedin-in"></i><span class="share-title">Linkedin</span></a>
+                                        <a href="#" class="d-flex-center btn btn-link btn--share share-email"><i class="icon anm anm-envelope-l"></i><span class="share-title">Email</span></a>
+                                    </div>
+                                    <!-- End Social Sharing -->
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 product-layout-info">
+                                <div class="product-wrap-bg text-center">
+                                    <!-- Product Details -->
+                                    <div class="product-single-meta">
+                                        <h2 class="product-main-title">{{product.product_name}}</h2>
+                                        <!-- Product Price -->
+                                        <div class="product-price d-flex-center justify-content-center my-3">
+                                            <span class="price old-price">{{product.product_del_price}}$</span><span class="price">{{product.product_price}}$</span>
                                         </div>
-                                        <!-- End Product Details -->
+                                        <!-- End Product Price -->
+                                        <!-- Product Reviews -->
+                                        <div class="product-review d-flex-center justify-content-center mb-3">
+                                            <div class="reviewStar d-flex-center"><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star-o"></i><span class="caption ms-2">24 Reviews</span></div>
+                                            <a class="reviewLink d-flex-center" href="#reviews">Write a Review</a>
+                                        </div>
+                                        <!-- End Product Reviews -->
+                                        <div class="userViewMsg featureText" data-user="20" data-time="11000"><i class="icon anm anm-eye-r"></i><b class="uersView">21</b> People are Looking for this Product</div> 
+                                        <hr />
+                                        <!-- Sort Description -->
+                                        <div class="sort-description mb-3">{{product.product_description}}</div>
+                                        <!-- End Sort Description -->
+                                        <hr />
+                                        
+                                    </div>
+                                    <!-- End Product Details -->
 
-                                        <!-- Product Form -->
-                                        <form method="post" action="#" class="product-form product-form-border">
-                                            <!-- Swatches -->
-                                            <div class="product-swatches-option">
-                                                <!-- Swatches Color -->
-                                                <div class="product-item swatches-image w-100 mb-3 swatch-0 option1" data-option-index="0">
-                                                    <label class="label d-flex align-items-center">Color:<span class="slVariant ms-1 fw-bold">Blue</span></label>
-                                                    <ul class="d-flex-wrap pt-1 clearfix">
-                                                        <li class="customRadio me-3 mb-0">
-                                                            <input name="swatch_clr_radio" id="blue" value="blue" type="radio" checked="checked" />
-                                                            <label for="blue" class="mb-0">Blue</label>
-                                                        </li>
-                                                        <li class="customRadio me-3 mb-0">
-                                                            <input name="swatch_clr_radio" id="purple" value="purple" type="radio" />
-                                                            <label for="purple" class="mb-0">Purple</label>
-                                                        </li>
-                                                        <li class="customRadio me-3 mb-0">
-                                                            <input name="swatch_clr_radio" id="green" value="green" type="radio" />
-                                                            <label for="green" class="mb-0">Green</label>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <!-- End Swatches Color -->
-                                                <!-- Swatches Size -->
-                                                <div class="product-item swatches-size w-100 mb-4 swatch-1 option2" data-option-index="1">
-                                                    <label class="label d-flex align-items-center">Size:<span class="slVariant ms-1 fw-bold">S</span></label>
-                                                    <ul class="d-flex-wrap pt-1 clearfix">
-                                                        <li class="customRadio me-3 mb-0">
-                                                            <input name="swatch_size_radio" id="xs" value="xs" type="radio" checked="checked" />
-                                                            <label for="xs" class="mb-0">XS</label>
-                                                        </li>
-                                                        <li class="customRadio me-3 mb-0">
-                                                            <input name="swatch_size_radio" id="s" value="s" type="radio" />
-                                                            <label for="s" class="mb-0">S</label>
-                                                        </li>
-                                                        <li class="customRadio me-3 mb-0">
-                                                            <input name="swatch_size_radio" id="m" value="m" type="radio" />
-                                                            <label for="m" class="mb-0">M</label>
-                                                        </li>
-                                                        <li class="customRadio me-3 mb-0">
-                                                            <input name="swatch_size_radio" id="l" value="l" type="radio" />
-                                                            <label for="l" class="mb-0">L</label>
-                                                        </li>
-                                                        <li class="customRadio me-3 mb-0">
-                                                            <input name="swatch_size_radio" id="xl" value="xl" type="radio" />
-                                                            <label for="xl" class="mb-0">XL</label>
-                                                        </li>
-                                                    </ul>
-                                                </div>                                
-                                                <!-- End Swatches Size -->
-                                            </div>                                 
-                                            <!-- End Swatches -->
+                                    <!-- Product Form -->
+                                    <form method="post" action="#" class="product-form product-form-border hidedropdown">
+                                        
 
-                                            <!-- Product Action -->
-                                            <div class="product-action w-100 d-flex-wrap my-3 my-md-4">
-                                                <!-- Product Quantity -->
-                                                <div class="product-form-quantity d-flex-center">
-                                                    <div class="qtyField">
-                                                        <a class="qtyBtn minus" href="#;"><i class="icon anm anm-minus-r"></i></a>
-                                                        <input type="text" name="quantity" value="1" class="product-form-input qty" />
-                                                        <a class="qtyBtn plus" href="#;"><i class="icon anm anm-plus-r"></i></a>
-                                                    </div>
-                                                </div>
-                                                <!-- End Product Quantity -->
-                                                <!-- Product Add -->
-                                                <div class="product-form-submit addcart fl-1 ms-3">
-                                                    <button type="submit" name="add" class="btn btn-secondary product-form-cart-submit"><span>Add to cart</span></button>
-                                                    <button type="submit" name="add" class="btn btn-secondary product-form-sold-out d-none" disabled="disabled">
-                                                        <i class="icon anm anm-cart-l me-2"></i> <span>Out of stock</span>
-                                                    </button>
-                                                    <button type="submit" name="add" class="btn btn-secondary product-form-pre-order d-none">
-                                                        <i class="icon anm anm-cart-l me-2"></i> <span>Pre-order Now</span>
-                                                    </button>
-                                                </div>
-                                                <!-- Product Add -->
-                                                <!-- Product Buy -->
-                                                <div class="product-form-submit buyit d-flex w-100 mt-3">
-                                                    <button type="submit" class="btn btn-primary proceed-to-checkout"><span>Buy it now</span></button>
-
-                                                    <a href="wishlist-style1.html" class="btn btn-secondary wishlist-submit w-auto p-3 ms-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Wishlist">
-                                                        <i class="icon anm anm-heart-l fs-6"></i>
-                                                    </a>
-                                                </div>
-                                                <!-- End Product Buy -->
-                                            </div>
-                                            <!-- End Product Action -->
-
+                                        <!-- Product Action -->
+                                        <div class="product-action w-100 d-flex-wrap justify-content-center mb-2 mb-md-2">
                                             <!-- Product Info link -->
-                                            <p class="infolinks d-flex-center justify-content-between">
+                                            <div class="infolinks w-100 d-flex-center justify-content-center mb-3">
+                                                <a class="text-link wishlist" href="wishlist-style1.html"><i class="icon anm anm-heart-l me-2"></i> <span>Add to Wishlist</span></a>
                                                 <a class="text-link compare" href="compare-style1.html"><i class="icon anm anm-sync-ar me-2"></i> <span>Add to Compare</span></a>
                                                 <a href="#shippingInfo-modal" class="text-link shippingInfo" data-bs-toggle="modal" data-bs-target="#shippingInfo_modal"><i class="icon anm anm-paper-l-plane me-2"></i> <span>Delivery &amp; Returns</span></a>
-                                                <a href="#productInquiry-modal" class="text-link emaillink me-0" data-bs-toggle="modal" data-bs-target="#productInquiry_modal"><i class="icon anm anm-question-cil me-2"></i> <span>Ask A Question</span></a>
-                                            </p>
+                                                <a href="#productInquiry-modal" class="text-link emaillink me-0" data-bs-toggle="modal" data-bs-target="#productInquiry_modal"><i class="icon anm anm-question-cil me-2"></i> <span>Enquiry</span></a>
+                                            </div>
                                             <!-- End Product Info link -->
-                                        </form>
-                                        <!-- End Product Form -->
-
-                                        <!-- Social Sharing -->
-                                        <div class="social-sharing d-flex-center mt-2 lh-lg">
-                                            <span class="sharing-lbl fw-600">Share :</span>
-                                            <a href="#" class="d-flex-center btn btn-link btn--share share-facebook"><i class="icon anm anm-facebook-f"></i><span class="share-title">Facebook</span></a>
-                                            <a href="#" class="d-flex-center btn btn-link btn--share share-twitter"><i class="icon anm anm-twitter"></i><span class="share-title">Tweet</span></a>
-                                            <a href="#" class="d-flex-center btn btn-link btn--share share-pinterest"><i class="icon anm anm-pinterest-p"></i> <span class="share-title">Pin it</span></a>
-                                            <a href="#" class="d-flex-center btn btn-link btn--share share-linkedin"><i class="icon anm anm-linkedin-in"></i><span class="share-title">Linkedin</span></a>
-                                            <a href="#" class="d-flex-center btn btn-link btn--share share-email"><i class="icon anm anm-envelope-l"></i><span class="share-title">Email</span></a>
+                                            <!-- Product Quantity -->
+                                            <div class="product-form-quantity d-flex-center">
+                                                <div class="qtyField">
+                                                    <a class="qtyBtn minus" href="#;"><i class="icon anm anm-minus-r"></i></a>
+                                                    <input type="text" name="quantity" value="1" class="product-form-input qty" />
+                                                    <a class="qtyBtn plus" href="#;"><i class="icon anm anm-plus-r"></i></a>
+                                                </div>
+                                            </div>
+                                            <!-- End Product Quantity -->
+                                            <!-- Product Add -->
+                                            <div class="product-form-submit addcart fl-1 ms-3">
+                                                <button type="submit" name="add" class="btn btn-secondary product-form-cart-submit">
+                                                    <span>Add to cart</span>
+                                                </button>
+                                            </div>
+                                            <!-- Product Add -->
+                                            <!-- Product Buy -->
+                                            <div class="product-form-submit buyit fl-1 ms-3">
+                                                <button type="submit" class="btn btn-primary proceed-to-checkout"><span>Buy it now</span></button>
+                                            </div>
+                                            <!-- End Product Buy -->
                                         </div>
-                                        <!-- End Social Sharing -->
+                                        <!-- End Product Action -->
+                                    </form>
+                                    <!-- End Product Form -->
+
+                                    <!-- Product Info -->
+                                    <div class="product-info">
+                                        <p class="product-stock d-flex justify-content-center">Availability:
+                                            <span class="pro-stockLbl ps-0">
+                                                <span class="d-flex-center stockLbl instock text-uppercase">In stock</span>
+                                            </span>
+                                        </p>
+                                        <p class="product-vendor">Vendor:<span class="text"><a href="#">Sparx</a></span></p>  
+                                        <p class="product-type">Product Type:<span class="text">Bottom</span></p> 
+                                        <p class="product-sku">SKU:<span class="text">RF104741</span></p>
+                                        <p class="product-cat">Categories: <span><a href="#">Fashion</a>, <a href="#">Tops</a>, <a href="#">Women</a>, <a href="#">New Arrivals</a></span></p>
+                                        <p class="product-tags">Tags: <span><a href="#">$10 - $100</a>, <a href="#">Green</a>, <a href="#">XL</a>, <a href="#">Sale</a>, <a href="#">Women</a></span></p>
                                     </div>
+                                    <!-- End Product Info -->
                                 </div>
                             </div>
-
-                            <div class="col-lg-3 col-md-12 col-sm-12 col-12 product-sidebar sidebar sidebar-bg">
-                                <div class="sidebar-tags sidebar-sticky clearfix mt-4 mt-lg-0">
-                                    <!--Store Feature-->
-                                    <div class="sidebar-widget clearfix">
-                                        <div class="widget-content pt-0 mt-0 border-0">
-                                            <div class="store-info-item d-flex align-items-center">
-                                                <div class="icon me-3"><i class="icon anm anm-truck-r fs-5"></i></div>
-                                                <div class="content">
-                                                    <h5 class="title text-transform-none">Free Shipping & Returns</h5>
-                                                    <p class="text text-muted text-small">Free shipping on order $99</p>
-                                                </div>
-                                            </div>
-                                            <div class="store-info-item d-flex align-items-center">
-                                                <div class="icon me-3"><i class="icon anm anm-lock-ar fs-4"></i></div>
-                                                <div class="content">
-                                                    <h5 class="title text-transform-none">Secured Payment</h5>
-                                                    <p class="text text-muted text-small">We accept all major credit cards.</p>
-                                                </div>
-                                            </div>
-                                            <div class="store-info-item d-flex align-items-center">
-                                                <div class="icon me-3"><i class="icon anm anm-phone-call-l fs-4"></i></div>
-                                                <div class="content">
-                                                    <h5 class="title text-transform-none">Online Support</h5>
-                                                    <p class="text text-muted text-small">We support online 24/7 on day.</p>
-                                                </div>
-                                            </div>
-                                            <div class="store-info-item d-flex align-items-center">
-                                                <div class="icon me-3"><i class="icon anm anm-redo fs-4"></i></div>
-                                                <div class="content">
-                                                    <h5 class="title text-transform-none">30 Days Return</h5>
-                                                    <p class="text text-muted text-small">30-days free return policy.</p>
-                                                </div>
-                                            </div>
-                                        </div>                                      
-                                    </div>
-                                    <!--End Store Feature-->
-                                    <!--Weekly Bestsellers-->
-                                    <div class="sidebar-widget clearfix">
-                                        <div class="widget-title"><h2>Weekly Bestsellers</h2></div>
-                                        <div class="widget-content">
-                                            <div class="list list-sidebar-products">
-                                                <div class="mini-list-item d-flex w-100 clearfix">
-                                                    <div class="mini-image"><a class="item-link" href="product-layout1.html"><img class="primary blur-up lazyload" data-src="assets/images/products/product1-120x170.jpg" src="assets/images/products/product1-120x170.jpg" alt="image" title="product" width="120" height="170"></a></div>
-                                                    <div class="ms-3 details">
-                                                        <div class="product-name"><a class="item-title" href="product-layout1.html">Oxford Cuban Shirt</a></div>
-                                                        <div class="product-price"><span class="old-price">$114.00</span><span class="price">$99.00</span></div>
-                                                        <div class="product-review d-flex align-items-center justify-content-start">
-                                                            <i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star-o"></i><i class="icon anm anm-star-o"></i>
-                                                            <span class="caption hidden ms-2">3 reviews</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mini-list-item d-flex w-100 clearfix">
-                                                    <div class="mini-image"><a class="item-link" href="product-layout1.html"><img class="primary blur-up lazyload" data-src="assets/images/products/product2-120x170.jpg" src="assets/images/products/product2-120x170.jpg" alt="image" title="product" width="120" height="170"></a></div>
-                                                    <div class="ms-3 details">
-                                                        <div class="product-name"><a class="item-title" href="product-layout1.html">Cuff Beanie Cap</a></div>
-                                                        <div class="product-price"><span class="price">$128.00</span></div>
-                                                        <div class="product-review d-flex align-items-center justify-content-start">
-                                                            <i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i>
-                                                            <span class="caption hidden ms-2">9 reviews</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mini-list-item d-flex w-100 clearfix">
-                                                    <div class="mini-image"><a class="item-link" href="product-layout1.html"><img class="primary blur-up lazyload" data-src="assets/images/products/product3-120x170.jpg" src="assets/images/products/product3-120x170.jpg" alt="image" title="product" width="120" height="170"></a></div>
-                                                    <div class="ms-3 details">
-                                                        <div class="product-name"><a class="item-title" href="product-layout1.html">Flannel Collar Shirt</a></div>
-                                                        <div class="product-price"><span class="price">$99.00</span></div>
-                                                        <div class="product-review d-flex align-items-center justify-content-start">
-                                                            <i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star-o"></i>
-                                                            <span class="caption hidden ms-2">30 reviews</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End Weekly Bestsellers-->
-                                </div>
-                            </div>
-                        </div>  
+                        </div>
                     </div>
                     <!--Product Content-->
 
-                    <!--Product Nav-->
-                    <a href="product-layout4.html" class="product-nav prev-pro clr-none d-flex-center justify-content-between" title="Previous Product">
-                        <span class="details">
-                            <span class="name">Oxford Cuban Shirt</span>
-                            <span class="price">$99.00</span>
-                        </span>
-                        <span class="img"><img class="rounded-0 rounded-start-0" src="assets/images/products/product3-120x170.jpg" alt="product" width="120" height="170" /></span>
-                    </a>
-                    <a href="product-layout6.html" class="product-nav next-pro clr-none d-flex-center justify-content-between" title="Next Product">
-                        <span class="img"><img class="rounded-0 rounded-end-0" src="assets/images/products/product5-120x170.jpg" alt="product" width="120" height="170" /></span>
-                        <span class="details">
-                            <span class="name">Cuff Beanie Cap</span>
-                            <span class="price">$128</span>
-                        </span>
-                    </a>
-                    <!--End Product Nav-->
+                    
 
                     
-{% endblock %}
+                    
+                </div>
+                <!--End Main Content-->
+
+                
+            </div>
+            <!-- End Body Container -->
+
+<!--Footer-->
+<div class="footer footer-5 ftr-bg-black">
+    <!--Promo bar-->
+    <div class="ftr-promo-bar style1">
+        <div class="container">
+            <div class="promo-slider-1items">
+                <div class="item text-center d-flex d-flex-justify-center flex-column flex-sm-row text-uppercase">
+                    <span class="icon-text d-flex-justify-center mb-2 mb-sm-0 "><i class="fs-3 icon anm anm-truck-l me-2 me-sm-3"></i> <strong class="me-1">100% Fast Free Delivery</strong> Without Contacting The Courier</span>
+                    <a href="shop-top-filter.html" class="btn btn-light ms-sm-3">Order Now</a>                        
+                </div>                       
+            </div>
+        </div>
+    </div>
+    <!--End Promo bar-->
+
+    <div class="footer-top border-0 clearfix">
+        <div class="container">                       
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-newsletter icon-arrow">
+                        <form action="#" method="post">
+                            <label class="h4 mb-2">Sign Up for Our Newsletter</label>
+                            <p>Subscribe to the mailing list to receive updates on new arrivals, special offers</p>
+                            <div class="input-group">
+                                <input type="email" class="form-control input-group-field newsletter-input" name="email" value="" placeholder="Enter your email address..." required />
+                                <button type="submit" class="input-group-btn text-link newsletter-submit" name="commit"><i class="icon anm anm-arw-right"></i></button>
+                            </div>
+                        </form>
+                        <ul class="list-inline social-icons d-inline-flex mt-3 pt-3">
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><i class="icon anm anm-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><i class="icon anm anm-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Pinterest"><i class="icon anm anm-pinterest-p"></i></a></li>
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Linkedin"><i class="icon anm anm-linkedin-in"></i></a></li>
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><i class="icon anm anm-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Youtube"><i class="icon anm anm-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-links ps-lg-5">
+                    <h4 class="h4">My Account</h4>
+                    <ul>
+                        <li><a href="my-account.html">My Account</a></li>
+                        <li><a href="faqs-style1.html">Order History</a></li>
+                        <li><a href="contact-style1.html">Contact Us</a></li>
+                        <li><a href="#">Orders and Returns</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-2 footer-links">
+                    <h4 class="h4">Information</h4>
+                    <ul>
+                        <li><a href="aboutus-style1.html">About Us</a></li>
+                        <li><a href="contact-style1.html">Contact Us</a></li>
+                        <li><a href="blog-grid.html">Latest News</a></li>                                   
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Terms &amp; condition</a></li>
+                    </ul>
+                </div>                              
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-contact">
+                    <h4 class="h4">Contact Info</h4>
+                    <p class="address d-flex"><i class="icon anm anm-map-marker-al pt-1"></i> 123 Street Name, City, England</p>
+                    <p class="phone d-flex align-items-center"><i class="icon anm anm-phone-l"></i>  <b class="me-2 fw-400">Toll Free</b> <a href="tel:401234567890">(+40) 123 456 7890</a></p>
+                    <p class="email d-flex align-items-center"><i class="icon anm anm-envelope-l"></i> <b class="me-1 d-none">Email:</b> <a href="mailto:info@example.com">info@example.com</a></p>
+                    <p class="work-hour d-flex mb-0"><i class="icon anm anm-clock-r pt-1"></i><span class="hour-time">Working Hours: <br/>Mon - Sun / 9:00 AM - 8:00 PM</span></p>
+                </div>
+            </div> 
+        </div>                       
+    </div>               
+    <div class="footer-bottom clearfix">
+        <div class="container">
+            <div class="d-flex-center flex-column justify-content-md-between flex-md-row-reverse py-lg-1">
+                <ul class="payment-icons d-flex-center mb-2 mb-md-0">
+                    <li><i class="icon anm anm-cc-visa"></i></li>
+                    <li><i class="icon anm anm-cc-mastercard"></i></li>
+                    <li><i class="icon anm anm-cc-amex"></i></li>
+                    <li><i class="icon anm anm-cc-paypal"></i></li>
+                    <li><i class="icon anm anm-cc-discover"></i></li>
+                    <li><i class="icon anm anm-cc-stripe"></i></li>
+                    <li><i class="icon anm anm-cc-jcb"></i></li>
+                </ul>
+                <div class="copytext">&copy; 2023 Hema. All Rights Reserved.</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Footer-->
+
+            <!--Scoll Top-->
+            <div id="site-scroll"><i class="icon anm anm-arw-up"></i></div>
+            <!--End Scoll Top-->
+
+
+
+
+            <!-- Including Jquery/Javascript -->           
+            <!-- Plugins JS -->
+            <script src="{% static 'web/js/plugins.js' %}"></script>  
+
+            <!-- Elevatezoom Zoom -->
+            <script src="{% static 'web/js/vendor/jquery.elevatezoom.js' %}"></script>
+            <script>
+                $(document).ready(function () {
+                    /* Product Zoom */
+                    function product_zoom() {
+                        $(".zoompro").elevateZoom({
+                            gallery: "gallery",
+                            galleryActiveClass: "active",
+                            zoomWindowWidth: 300,
+                            zoomWindowHeight: 100,
+                            scrollZoom: false,
+                            zoomType: "inner",
+                            cursor: "crosshair"
+                        });
+                    }
+                    product_zoom();
+                });
+            </script>
+
+            <!-- Main JS -->
+            <script src="{% static 'web/js/main.js' %}"></script>
+
+            <!-- Photoswipe Gallery JS -->
+            <script src="{% static 'web/js/vendor/photoswipe.min.js' %}"></script>
+            <script>
+                $(function () {
+                    var $pswp = $('.pswp')[0],
+                            image = [],
+                            getItems = function () {
+                                var items = [];
+                                $('.lightboximages a').each(function () {
+                                    var $href = $(this).attr('href'),
+                                            $size = $(this).data('size').split('x'),
+                                            item = {
+                                                src: $href,
+                                                w: $size[0],
+                                                h: $size[1]
+                                            };
+                                    items.push(item);
+                                });
+                                return items;
+                            };
+                    var items = getItems();
+
+                    $.each(items, function (index, value) {
+                        image[index] = new Image();
+                        image[index].src = value['src'];
+                    });
+                    $('.prlightbox').on('click', function (event) {
+                        event.preventDefault();
+
+                        var $index = $(".active-thumb").parent().attr('data-slick-index');
+                        $index++;
+                        $index = $index - 1;
+
+                        var options = {
+                            index: $index,
+                            bgOpacity: 0.7,
+                            showHideOpacity: true
+                        };
+                        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+                        lightBox.init();
+                    });
+                });
+            </script>
+            <div class="pswp" tabindex="-1" role="dialog">
+                <div class="pswp__bg"></div>
+                <div class="pswp__scroll-wrap">
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+                    <div class="pswp__ui pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                            <div class="pswp__counter"></div>
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                        <div class="pswp__caption"><div class="pswp__caption__center"></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--End Page Wrapper-->
+    </body>
+</html>

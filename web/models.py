@@ -48,9 +48,7 @@ class Product(models.Model):
     product_image=models.ImageField()
     product_price=models.CharField(max_length=30)
     product_del_price=models.CharField(max_length=30)
-    
-    
-    
+    product_description=models.TextField()
     
     def __str__(self):
         return self.product_name

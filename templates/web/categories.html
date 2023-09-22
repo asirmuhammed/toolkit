@@ -29,13 +29,13 @@
                             <!--Product Grid-->
                             <div class="grid-products grid-view-items">
                                 <div class="row col-row product-options row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-2">
-                                    {% for product in product %}                                   
+                                    {% for product in products %}                                   
                                     <div class="item col-item">
                                         <div class="product-box">
                                             <!-- Start Product Image -->
                                             <div class="product-image">
                                                 <!-- Start Product Image -->
-                                                <a href="product-layout1.html" class="product-img rounded-0"><img class="rounded-0 blur-up lazyload" src="{{product.product_image.url}}" alt="Product" title="Product" width="625" height="808" /></a>
+                                                <a href="{% url 'web:product-detail'  product.id %}" class="product-img rounded-0"><img class="rounded-0 blur-up lazyload" src="{{product.product_image.url}}" alt="Product" title="Product" width="625" height="808" /></a>
                                                 <!-- End Product Image -->
                                                 
                                                 

@@ -85,13 +85,13 @@ def categories(request,id):
     
     return render(request,'web/categories.html',context)
 
-# def product_detail(request, id):
-#     product =Product.objects.get(id=id)
-#     context = {'product': product}
-#     return render(request, 'web/product-detail.html', context)
-
-def product_detail(request):
-    context = {}
+def product_detail(request, id):
+    product =Product.objects.get(id=id)
+    context = {'product': product}
     return render(request, 'web/product-detail.html', context)
+
+# def product_detail(request):
+#     context = {}
+#     return render(request, 'web/product-detail.html', context)
 
 
