@@ -5,7 +5,7 @@
         <div class="row">
             <!--Logo-->
             <div class="logo col-4 col-sm-4 col-md-4 col-lg-1 col-xxl-1 align-self-center">
-                <a class="logoImg" href="index.html"><img src="{% static 'web/images/logo-tools.png' %}" alt="Hema Multipurpose Html Template" title="Hema Multipurpose Html Template" width="149" height="39" /></a>
+                <a class="logoImg" href="{% url 'web:index' %}"><img src="{% static 'web/images/logo-tools.png' %}" alt="Hema Multipurpose Html Template" title="Hema Multipurpose Html Template" width="149" height="39" /></a>
             </div>
             <!--End Logo-->
             <!--Menu-->
@@ -44,7 +44,7 @@
                 
                 <!--Minicart-->
                 <div class="header-cart iconset" title="Cart">
-                    <a href="#;" class="header-cart btn-minicart clr-none" data-bs-toggle="offcanvas" data-bs-target="#minicart-drawer"><i class="hdr-icon icon anm anm-cart-l"></i><span class="cart-count">3</span></a>
+                    <a href="{% url 'web:cart' %}" class="header-cart btn-minicart clr-none" data-bs-toggle="#" data-bs-target="#minicart-drawer"><i class="hdr-icon icon anm anm-cart-l"></i><span class="cart-count"></span></a>
                 </div>
                 <!--End Minicart-->
                 <!--Mobile Toggle-->

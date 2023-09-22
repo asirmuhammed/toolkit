@@ -2,13 +2,18 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
 import json
 from .forms import ContactForm
 from .models import Blog
 from .models import Gallery
 from .models import Category
 from .models import Product
+from django.shortcuts import render, redirect
+from web.models import Product
+from django.contrib.auth.decorators import login_required
+from cart.cart import Cart
+
+
 
 def index(request):
     context = {"is_index": True,
@@ -22,10 +27,26 @@ def about(request):
     context = {"is_about": True}
     return render(request, "web/about.html", context)
 
+# def product(request):
+#     context = {"is_product": True,
+#                'product':Product.objects.all(),}
+#     return render(request, "web/product.html", context)
+
 def product(request):
-    context = {"is_product": True,
-               'product':Product.objects.all(),}
+    category_id = request.GET.get('category')
+    products = Product.objects.all()
+
+    if category_id:
+        products = products.filter(category_id=category_id)
+
+    categories = Category.objects.all()
+    context = {
+        "is_product": True,
+        'products': products,
+        'categories': categories,
+    }
     return render(request, "web/product.html", context)
+
 
 def blog(request):
     context = {"is_blog": True,
@@ -90,8 +111,60 @@ def product_detail(request, id):
     context = {'product': product}
     return render(request, 'web/product-detail.html', context)
 
-# def product_detail(request):
-#     context = {}
-#     return render(request, 'web/product-detail.html', context)
+
+def cart(request):
+    context = {"is_cart": True}
+    return render(request, "web/cart.html", context)
+
+def checkout(request):
+    context = {"is_checkout": True}
+    return render(request, "web/checkout.html", context)
 
 
+
+
+
+
+
+
+def cart_add(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("web/index.html")
+
+
+
+def item_clear(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.remove(product)
+    return redirect("cart")
+
+
+
+def item_increment(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("cart")
+
+
+
+def item_decrement(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.decrement(product=product)
+    return redirect("cart")
+
+
+
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart")
+
+
+
+def cart_detail(request):
+    return render(request, 'web/cart_detail.html')

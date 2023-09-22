@@ -14,7 +14,7 @@
             <picture>
               <source
                 media="(max-width:767px)"
-                srcset="{% static 'web/images/slideshow/demo5-banner2-mbl.jpg' %}"
+                srcset="{% static 'web/images/slideshow/demo5-banner2.jpg' %}"
                 width="1100"
                 height="700"
               />
@@ -40,7 +40,7 @@
                       Runs faster. Costs less and never breaks.
                     </p>
                     <div class="ss-btnWrap">
-                      <a class="btn btn-secondary" href="shop-grid-view.html"
+                      <a class="btn btn-secondary" href="{% url 'web:product' %}"
                         >Shop now</a
                       >
                     </div>
@@ -55,7 +55,7 @@
             <picture>
               <source
                 media="(max-width:767px)"
-                srcset="{% static 'web/images/slideshow/demo5-banner1-mbl.jpg' %}"
+                srcset="{% static 'web/images/slideshow/demo5-banner1.jpg' %}"
                 width="1100"
                 height="700"
               />
@@ -81,10 +81,10 @@
                       Power your tools. It is another excellent tool from Bosch
                     </p>
                     <div class="ss-btnWrap">
-                      <a class="btn btn-primary" href="shop-grid-view.html"
+                      <a class="btn btn-primary" href="{% url 'web:product' %}"
                         >Order now</a
                       >
-                      <a class="btn btn-secondary" href="shop-grid-view.html"
+                      <a class="btn btn-secondary" href="{% url 'web:product' %}"
                         >Explore now</a
                       >
                     </div>
@@ -178,10 +178,10 @@
                                       <!-- Start Product Image -->
                                       <div class="product-image">
                                           <!-- Start Product Image -->
-                                          <a href="product-layout1.html" class="product-img"><img class="blur-up lazyload" src="{{product.product_image.url}}" data-src="{{product.product_image.url}}" alt="Product" title="Product" width="625" height="781" /></a>
+                                          <a href="{% url 'web:product-detail'  product.id %}" class="product-img"><img class="blur-up lazyload" src="{{product.product_image.url}}" data-src="{{product.product_image.url}}" alt="Product" title="Product" width="625" height="781" /></a>
                                           <div class="button-set style2">
                                               <!--Cart Button-->
-                                              <a href="#quickshop-modal" class="btn-icon addtocart quick-shop-modal" data-bs-toggle="modal" data-bs-target="#quickshop_modal">
+                                              <a href="#" class="btn-icon addtocart quick-shop-modal" data-bs-toggle="modal" data-bs-target="#quickshop_modal">
                                                   <span class="icon-wrap d-flex-justify-center h-100 w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Quick Shop"><i class="icon anm anm-cart-l"></i><span class="text">Quick Shop</span></span>
                                               </a>
                                               <!--End Cart Button-->
@@ -228,7 +228,7 @@
                           </div>  
 
                           <div class="view-collection text-center mt-4 mt-md-5">
-                              <a href="shop-left-sidebar.html" class="btn btn-primary btn-lg">View Collection</a>
+                              <a href="{% url 'web:product' %}" class="btn btn-primary btn-lg">View Collection</a>
                           </div>
                       </div>
                       <!--End Product Grid-->
