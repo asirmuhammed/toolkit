@@ -32,13 +32,13 @@
                         <div class="row align-items-center">
                             
                             
-                            <div class="col-8 col-sm-6 col-md-4 col-lg-4 text-right filters-toolbar-item d-flex justify-content-end order-2 order-sm-2">
+                            <div class="col-8 col-sm-6 col-md-4 col-lg-4 text-right filters-toolbar-item order-2 order-sm-2">
                                 
-                                <div class="filters-item d-flex align-items-center ms-2 ms-lg-3">
-                                    <label for="SortBy" class="mb-0 me-2 text-nowrap d-none">Sort by:</label>
-                                    <form id="filterForm" method="GET" action="{% url 'web:product' %}">
+                                <div class="filters-item d-flex align-items-center">
+                                    {% comment %} <label for="SortBy" class="mb-0 me-2 text-nowrap d-none">Sort by:</label> {% endcomment %}
+                                    <form id="filterForm" method="GET" action="{% url 'web:product' %}" >
                                         <select name="category" id="SortBy" class="filters-toolbar-sort">
-                                            <option value="" selected="selected">{{ category.category_title }}</option>
+                                            <option value="" selected="selected">Categories</option>
                                             {% for category in categories %}
                                                 <option value="{{ category.id }}">{{ category.category_title }}</option>
                                             {% endfor %}
@@ -46,18 +46,7 @@
                                         <button type="submit" style="display: none;" id="filterButton">Filter</button>
                                     </form>
                                     
-                                    <!-- <select name="SortBy" id="SortBy" class="filters-toolbar-sort">
-                                        <option value="featured" selected="selected">Featured</option>
-                                        {% for category in category %}
-                                        <option value="best-selling">{{category.category_title}}</option>
-                                        {% comment %} <option value="title-ascending">Alphabetically, A-Z</option>
-                                        <option value="title-descending">Alphabetically, Z-A</option>
-                                        <option value="price-ascending">Price, low to high</option>
-                                        <option value="price-descending">Price, high to low</option>
-                                        <option value="created-ascending">Date, old to new</option>
-                                        <option value="created-descending">Date, new to old</option> {% endcomment %} 
-                                        {% endfor %}
-                                    </select> -->
+                                    
                                 </div>
                             </div>
                         </div>
@@ -79,20 +68,20 @@
                                                 <a href="{% url 'web:product-detail'  product.id %}" class="product-img"><img class="blur-up lazyload" src="{{product.product_image.url}}" data-src="{{product.product_image.url}}" alt="Product" title="Product" width="625" height="781" /></a>
                                                 <div class="button-set style2">
                                                     <!--Cart Button-->
-                                                    <a href="#" class="btn-icon addtocart quick-shop-modal" data-bs-toggle="modal" data-bs-target="#quickshop_modal">
-                                                        <span class="icon-wrap d-flex-justify-center h-100 w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Quick Shop"><i class="icon anm anm-cart-l"></i><span class="text">Quick Shop</span></span>
+                                                    <a href="{% url 'web:cart_add' product.id %}" class="btn-icon addtocart quick-shop-modal" >
+                                                        <span class="icon-wrap d-flex-justify-center h-100 w-100" title="Quick Shop"><i class="icon anm anm-cart-l"></i><span class="text">Quick Shop</span></span>
                                                     </a>
                                                     <!--End Cart Button-->
                                                     <!--Quick View Button-->
-                                                    <a href="#quickview-modal" class="btn-icon quickview quick-view-modal" data-bs-toggle="modal" data-bs-target="#quickview_modal">
+                                                    <a href="#" class="btn-icon quickview quick-view-modal" data-bs-toggle="modal" data-bs-target="#quickview_modal">
                                                         <span class="icon-wrap d-flex-justify-center h-100 w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Quick View"><i class="icon anm anm-search-plus-l"></i><span class="text">Quick View</span></span>
                                                     </a>
                                                     <!--End Quick View Button-->
                                                     <!--Wishlist Button-->
-                                                    <a href="wishlist-style2.html" class="btn-icon wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add To Wishlist"><i class="icon anm anm-heart-l"></i><span class="text">Add To Wishlist</span></a>
+                                                    <a href="#" class="btn-icon wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add To Wishlist"><i class="icon anm anm-heart-l"></i><span class="text">Add To Wishlist</span></a>
                                                     <!--End Wishlist Button-->
                                                     <!--Compare Button-->
-                                                    <a href="compare-style2.html" class="btn-icon compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Compare"><i class="icon anm anm-random-r"></i><span class="text">Add to Compare</span></a>
+                                                    <a href="#" class="btn-icon compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Compare"><i class="icon anm anm-random-r"></i><span class="text">Add to Compare</span></a>
                                                     <!--End Compare Button-->
                                                 </div>
                                                 <!--End Product Button-->
@@ -101,7 +90,7 @@
                                             <!-- Start Product Details -->
                                             <div class="product-details text-left">
                                                 <!--Product Vendor-->
-                                                <div class="product-vendor">Tools</div>
+                                                <div class="product-vendor">{{product.category}}</div>
                                                 <!--End Product Vendor-->
                                                 <!-- Product Name -->
                                                 <div class="product-name">
@@ -110,7 +99,7 @@
                                                 <!-- End Product Name -->
                                                 <!-- Product Price -->
                                                 <div class="product-price">
-                                                    <span class="price old-price">$114.00</span><span class="price">$99.00</span>
+                                                    <span class="price old-price">{{product.product_del_price}}</span><span class="price">{{product.product_price}}</span>
                                                 </div>
                                                 <!-- End Product Price -->
                                                 <!-- Product Review -->

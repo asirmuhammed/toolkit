@@ -42,7 +42,7 @@
                                                 <!--Product Button-->
                                                 <div class="button-set style1">
                                                     <!--Cart Button-->
-                                                    <a href="#quickshop-modal" class="btn-icon addtocart quick-shop-modal" data-bs-toggle="modal" data-bs-target="#quickshop_modal">
+                                                    <a href="{% url 'web:cart_add' product.id %}" class="btn-icon addtocart quick-shop-modal">
                                                         <span class="icon-wrap d-flex-justify-center h-100 w-100" data-bs-toggle="tooltip" data-bs-placement="left" title="Quick Shop"><i class="icon anm anm-cart-l"></i><span class="text">Quick Shop</span></span>
                                                     </a>
                                                     <!--End Cart Button-->

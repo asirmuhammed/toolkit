@@ -181,8 +181,8 @@
                                           <a href="{% url 'web:product-detail'  product.id %}" class="product-img"><img class="blur-up lazyload" src="{{product.product_image.url}}" data-src="{{product.product_image.url}}" alt="Product" title="Product" width="625" height="781" /></a>
                                           <div class="button-set style2">
                                               <!--Cart Button-->
-                                              <a href="#" class="btn-icon addtocart quick-shop-modal" data-bs-toggle="modal" data-bs-target="#quickshop_modal">
-                                                  <span class="icon-wrap d-flex-justify-center h-100 w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Quick Shop"><i class="icon anm anm-cart-l"></i><span class="text">Quick Shop</span></span>
+                                              <a href="{% url 'web:cart_add' product.id %}" class="btn-icon addtocart quick-shop-modal" >
+                                                  <span class="icon-wrap d-flex-justify-center h-100 w-100" title="Quick Shop"><i class="icon anm anm-cart-l"></i><span class="text">Quick Shop</span></span>
                                               </a>
                                               <!--End Cart Button-->
                                               <!--Quick View Button-->
@@ -191,10 +191,10 @@
                                               </a>
                                               <!--End Quick View Button-->
                                               <!--Wishlist Button-->
-                                              <a href="wishlist-style2.html" class="btn-icon wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add To Wishlist"><i class="icon anm anm-heart-l"></i><span class="text">Add To Wishlist</span></a>
+                                              <a href="#" class="btn-icon wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Add To Wishlist"><i class="icon anm anm-heart-l"></i><span class="text">Add To Wishlist</span></a>
                                               <!--End Wishlist Button-->
                                               <!--Compare Button-->
-                                              <a href="compare-style2.html" class="btn-icon compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Compare"><i class="icon anm anm-random-r"></i><span class="text">Add to Compare</span></a>
+                                              <a href="#" class="btn-icon compare" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Compare"><i class="icon anm anm-random-r"></i><span class="text">Add to Compare</span></a>
                                               <!--End Compare Button-->
                                           </div>
                                           <!--End Product Button-->
@@ -203,7 +203,7 @@
                                       <!-- Start Product Details -->
                                       <div class="product-details text-left">
                                           <!--Product Vendor-->
-                                          <div class="product-vendor">Tools</div>
+                                          <div class="product-vendor">{{product.category}}</div>
                                           <!--End Product Vendor-->
                                           <!-- Product Name -->
                                           <div class="product-name">
@@ -212,7 +212,7 @@
                                           <!-- End Product Name -->
                                           <!-- Product Price -->
                                           <div class="product-price">
-                                              <span class="price old-price">$114.00</span><span class="price">$99.00</span>
+                                              <span class="price old-price">{{product.product_del_price}}</span><span class="price">{{product.product_price}}</span>
                                           </div>
                                           <!-- End Product Price -->
                                           <!-- Product Review -->
@@ -276,7 +276,7 @@
           <div class="blog-item">
             <div class="blog-article zoomscal-hov bg-white">
               <div class="blog-img">
-                <a class="featured-image zoom-scal m-0" href="blog-details.html"
+                <a class="featured-image zoom-scal m-0" href="{% url 'web:blog_detail' obj.id %}"
                   ><img
                     class="blur-up lazyload"
                     data-src="{{obj.image.url}}"

@@ -9,42 +9,159 @@
             </div>
             <!--End Logo-->
             <!--Menu-->
-            <div class="col-1 col-sm-1 col-md-1 col-lg-6 col-xxl-6 align-self-center d-menu-col hdr-menu-left menu-position-left">
+            <div class="col-1 col-sm-1 col-md-1 col-lg-6 col-xxl-6 align-self-center d-menu-col hdr-menu-left menu-position-right">
                 <nav class="navigation ps-lg-4 ps-xl-3" id="AccessibleNav">
                     <ul id="siteNav" class="site-nav medium right">
-                        <li class="lvl1 parent dropdown"><a href="{% url 'web:index' %}">Home </a>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'web:index' %}">Home</a>
                             
                         </li>
-                        <li class="lvl1 parent megamenu"><a href="{% url 'web:about' %}">About </a>
+                        <li class="lvl1 parent megamenu"><a href="{% url 'web:about' %}">About</a>
                             
                         </li>
-                        <li class="lvl1 parent megamenu"><a href="{% url 'web:product' %}">Products </a>
+                        <li class="lvl1 parent megamenu"><a href="{% url 'web:product' %}">Product</a>
                             
                         </li>
-                        <li class="lvl1 parent dropdown"><a href="{% url 'web:blog' %}">Updates </a>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'web:blog' %}">update</a>
                             
                         </li>
-                        <li class="lvl1 parent dropdown"><a href="{% url 'web:gallery' %}">gallery</a>
-                        </li>
-                        <li class="lvl1 parent dropdown"><a href="{% url 'web:contact' %}">Contact </a>
+                        <li class="lvl1 parent dropdown"><a href="{% url 'web:gallery' %}">Gallery</a>
                             
                         </li>
-                        
-                        
-                        
+                        <li class="lvl1 parent dropdown"><a href="{% url 'web:contact' %}">contact</a>
+                            
+                        </li>
                     </ul>
                 </nav>
             </div>
             <!--End Menu-->
             <!--Right Icon-->
             <div class="col-8 col-sm-8 col-md-8 col-lg-5 col-xxl-5 align-self-center icons-col text-right">
+                <!--Search-->
+                <div class="search-parent iconset">
+                    <!--Search Inline-->
+                    <div class="minisearch-inline d-none d-lg-block">
+                        <form class="form minisearch search-inline-brd" id="header-search0" action="{% url 'web:product' %}" method="get">
+                            <label class="label d-none"><span>Search</span></label>
+                            <!--Search Field-->
+                            <div class="d-flex searchField">
+                               <div class="search-category">
+                                    <select class="rgsearch-category border-0">
+                                        <option value="">All Categories</option>
+                                        {% for category in categories %}
+                                        <option value="{{ category.id }}">{{ category.category_title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div> 
+                                <div class="input-box d-flex fl-1">
+                                    <input type="text" name="search" class="form-control input-group-field search-input border-0" placeholder="Search here..." value="" />
+                                    <button type="submit" class="input-group-btn text-link search-submit border-0"><i class="hdr-icon icon anm anm-search-l"></i></button>
+                                </div>
+                            </div>
+                            <!--End Search Field-->
+                        </form>
+                    </div>
+                    <!--End Search Inline-->
+
+                    <div class="site-search d-lg-none" data-bs-toggle="tooltip" data-bs-placement="top" title="Search">
+                        <a href="#;" class="search-icon clr-none" data-bs-toggle="offcanvas" data-bs-target="#search-drawer"><i class="hdr-icon icon anm anm-search-l"></i></a>
+                    </div>
+                    <div class="search-drawer offcanvas offcanvas-top" tabindex="-1" id="search-drawer">
+                        <div class="container">
+                            <div class="search-header d-flex-center justify-content-between mb-3">
+                                <h3 class="title m-0">What are you looking for?</h3>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="search-body">
+                                <form class="form minisearch" id="header-search" action="#" method="get">
+                                    <!--Search Field-->
+                                    <div class="d-flex searchField">
+                                        <div class="search-category">
+                                            <select class="rgsearch-category rounded-end-0">
+                                                <option value="0">All Categories</option>
+                                                <option value="1">- All</option>
+                                                <option value="2">- Fashion</option>
+                                                <option value="3">- Shoes</option>
+                                                <option value="4">- Electronic</option>
+                                                <option value="5">- Jewelry</option>
+                                                <option value="6">- Vegetables</option>
+                                                <option value="7">- Furniture</option>
+                                                <option value="8">- Accessories</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-box d-flex fl-1">
+                                            <input type="text" class="input-text border-start-0 border-end-0" placeholder="Search for products..." value="" />
+                                            <button type="submit" class="action search d-flex-justify-center btn btn-primary rounded-start-0"><i class="icon anm anm-search-l"></i></button>
+                                        </div>
+                                    </div>
+                                    <!--End Search Field-->
+                                    <!--Search popular-->
+                                    <div class="popular-searches d-flex-justify-center mt-3">
+                                        <span class="title fw-600">Trending Now:</span>
+                                        <div class="d-flex-wrap searches-items">
+                                            <a class="text-link ms-2" href="#">Forks,</a>
+                                            <a class="text-link ms-2" href="#">Tools,</a>
+                                            <a class="text-link ms-2" href="#">Parts</a>
+                                        </div>
+                                    </div>
+                                    <!--End Search popular-->
+                                    <!--Search products-->
+                                    <div class="search-products">
+                                        <ul class="items g-2 g-md-3 row row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
+                                            <li class="item empty w-100 text-center text-muted d-none">You don't have any items in your search.</li>
+                                            <li class="item">                                                       
+                                                <div class="mini-list-item d-flex align-items-center w-100 clearfix">
+                                                    <div class="mini-image text-center"><a class="item-link" href="product-layout1.html"><img class="blur-up lazyload" data-src="assets/images/products/tools1-120x170.jpg" src="assets/images/products/tools1-120x170.jpg" alt="image" title="product" width="120" height="170" /></a></div>
+                                                    <div class="ms-3 details text-left">
+                                                        <div class="product-name"><a class="item-title" href="product-layout1.html">Tool Plasterer</a></div>
+                                                        <div class="product-price"><span class="old-price">$114.00</span><span class="price">$99.00</span></div>
+                                                        <div class="product-review d-flex align-items-center justify-content-start">
+                                                            <i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star-o"></i><i class="icon anm anm-star-o"></i>
+                                                            <span class="caption hidden ms-2">3 reviews</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="mini-list-item d-flex align-items-center w-100 clearfix">
+                                                    <div class="mini-image text-center"><a class="item-link" href="product-layout1.html"><img class="blur-up lazyload" data-src="assets/images/products/tools2-120x170.jpg" src="assets/images/products/tools2-120x170.jpg" alt="image" title="product" width="120" height="170" /></a></div>
+                                                    <div class="ms-3 details text-left">
+                                                        <div class="product-name"><a class="item-title" href="product-layout1.html">Hammer Tool</a></div>
+                                                        <div class="product-price"><span class="price">$128.00</span></div>
+                                                        <div class="product-review d-flex align-items-center justify-content-start">
+                                                            <i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i>
+                                                            <span class="caption hidden ms-2">9 reviews</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="mini-list-item d-flex align-items-center w-100 clearfix">
+                                                    <div class="mini-image text-center"><a class="item-link" href="product-layout1.html"><img class="blur-up lazyload" data-src="assets/images/products/tools3-120x170.jpg" src="assets/images/products/tools3-120x170.jpg" alt="image" title="product" width="120" height="170" /></a></div>
+                                                    <div class="ms-3 details text-left">
+                                                        <div class="product-name"><a class="item-title" href="product-layout1.html">Planes Hand tool</a></div>
+                                                        <div class="product-price"><span class="price">$99.00</span></div>
+                                                        <div class="product-review d-flex align-items-center justify-content-start">
+                                                            <i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star-o"></i>
+                                                            <span class="caption hidden ms-2">30 reviews</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!--End Search products-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End Search-->
                 
                 
-               
                 
                 <!--Minicart-->
                 <div class="header-cart iconset" title="Cart">
-                    <a href="{% url 'web:cart' %}" class="header-cart btn-minicart clr-none" data-bs-toggle="#" data-bs-target="#minicart-drawer"><i class="hdr-icon icon anm anm-cart-l"></i><span class="cart-count"></span></a>
+                    <a href="{% url 'web:cart' %}" class="header-cart btn-minicart clr-none" ><i class="hdr-icon icon anm anm-cart-l"></i><span class="cart-count">{{request.session.cart|length}}</span></a>
                 </div>
                 <!--End Minicart-->
                 <!--Mobile Toggle-->
@@ -56,6 +173,7 @@
     </div>
 </header>
 <!--End Header-->
+
 <!--Mobile Menu-->
 <div class="mobile-nav-wrapper mobileMenu-bg-black" role="navigation">
     <div class="closemobileMenu">Close Menu <i class="icon anm anm-times-l"></i></div>
@@ -95,3 +213,15 @@
     </ul>
 </div>
 <!--End Mobile Menu-->
+
+
+
+
+
+
+
+
+
+
+
+

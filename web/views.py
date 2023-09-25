@@ -4,14 +4,17 @@ from django.http import HttpResponse
 from django.urls import reverse
 import json
 from .forms import ContactForm
+from .forms import CheckoutForm
 from .models import Blog
 from .models import Gallery
 from .models import Category
 from .models import Product
 from django.shortcuts import render, redirect
 from web.models import Product
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
+from django.db.models import Q
 
 
 
@@ -34,10 +37,19 @@ def about(request):
 
 def product(request):
     category_id = request.GET.get('category')
+    search_query = request.GET.get('search')
+
     products = Product.objects.all()
 
     if category_id:
         products = products.filter(category_id=category_id)
+
+    if search_query:
+        # Perform a case-insensitive search across product names and descriptions
+        products = products.filter(
+            Q(product_name__icontains=search_query) | 
+            Q(product_description__icontains=search_query)
+        )
 
     categories = Category.objects.all()
     context = {
@@ -58,20 +70,8 @@ def contact(request):
     if request.method == "POST":
         if form.is_valid():
             form.save()
-            response_data = {
-                "status": "true",
-                "title": "Successfully Submitted",
-                "message": "Message successfully updated",
-            }
-        else:
-            print(form.errors)
-            response_data = {
-                "status": "false",
-                "title": "Form validation error",
-            }
-        return HttpResponse(
-            json.dumps(response_data), content_type="application/javascript"
-        )
+        messages.success(request,"succsessfully saved")
+        return redirect('/contact')
     else:
         context = {
             "is_contact": True,
@@ -117,7 +117,17 @@ def cart(request):
     return render(request, "web/cart.html", context)
 
 def checkout(request):
-    context = {"is_checkout": True}
+    form = CheckoutForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+        messages.success(request,"succsessfully saved")
+        return redirect('/checkout')
+    else:
+        context = {
+            "is_checkout": True,
+            "form": form,
+        }
     return render(request, "web/checkout.html", context)
 
 
@@ -131,7 +141,7 @@ def cart_add(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.add(product=product)
-    return redirect("web/index.html")
+    return redirect("/")
 
 
 
@@ -139,7 +149,7 @@ def item_clear(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.remove(product)
-    return redirect("cart")
+    return redirect("web:cart")
 
 
 
@@ -147,7 +157,7 @@ def item_increment(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.add(product=product)
-    return redirect("cart")
+    return redirect("web:cart")
 
 
 
@@ -155,14 +165,14 @@ def item_decrement(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.decrement(product=product)
-    return redirect("cart")
+    return redirect("web:cart")
 
 
 
 def cart_clear(request):
     cart = Cart(request)
     cart.clear()
-    return redirect("cart")
+    return redirect("web:cart")
 
 
 

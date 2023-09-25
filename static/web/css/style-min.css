@@ -182,7 +182,7 @@ th {
   border: 1px solid #ddd;
 }
 .required {
-  color: #ff0202;
+  /* color: #ff0202; */
 }
 a {
   outline: 0;
@@ -5857,6 +5857,7 @@ textarea:-ms-input-placeholder {
 .toolbar-wrapper select {
   height: 36px;
   min-width: 65px;
+  
 }
 .blog-article .featured-image {
   position: relative;

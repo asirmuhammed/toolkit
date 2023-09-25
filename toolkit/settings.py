@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     
 ]
 
-CART_SESSION_ID = 'cart'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,7 +77,7 @@ TEMPLATES = [
         },
     },
 ]
-
+CART_SESSION_ID = 'cart'
 WSGI_APPLICATION = 'toolkit.wsgi.application'
 
 

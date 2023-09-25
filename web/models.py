@@ -55,3 +55,22 @@ class Product(models.Model):
     
     
     
+    
+class Checkout(models.Model):
+    firstname=models.CharField(max_length=40)
+    lastname=models.CharField(max_length=40)
+    address=models.CharField(max_length=250)
+    subaddress=models.CharField(max_length=250,blank=True, null=True)
+    postcode=models.CharField(max_length=40)
+    country=models.CharField(max_length=50)
+    state=models.CharField(max_length=50)
+    town=models.CharField(max_length=50)
+    
+    
+    
+    def __str__(self):
+        return self.firstname
+    
+    
+    
+    
