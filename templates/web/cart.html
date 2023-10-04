@@ -49,7 +49,7 @@
                                     </thead>
                                     <tbody>
                                         {% for key,value in request.session.cart.items %}
-                                        <tr class="cart-row cart-flex position-relative">
+                                        <tr class="cart-row-td cart-flex position-relative">
                                             <td class="cart-delete text-center small-hide"><a href="{% url 'web:item_clear' id=value.product_id %}" class="cart-remove remove-icon position-static" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove to Cart"><i class="icon anm anm-times-r"></i></a></td>
                                             <td class="cart-image cart-flex-item">
                                                 <a href="{% url 'web:product-detail' id=value.product_id %}"><img class="cart-image rounded-0 blur-up lazyload" data-src="{{ value.image}}" src="{{ value.image}}" alt="{{ value.product_name}}" width="120" height="170" /></a>
@@ -62,11 +62,11 @@
                                                     Categories: {{value.category}}
                                                 </div>
                                                 <div class="cart-price d-md-none">
-                                                    <span class="money fw-500">${{value.price}}</span>
+                                                    <span class="money fw-500">₹{{value.price}}</span>
                                                 </div>
                                             </td>
                                             <td class="cart-price cart-flex-item text-center small-hide">
-                                                <span class="money">${{value.price}}</span>
+                                                <span class="money">₹{{value.price}}</span>
                                             </td>
                                             <td class="cart-update-wrapper cart-flex-item text-end text-md-center">
                                                 <div class="cart-qty d-flex justify-content-end justify-content-md-center">
@@ -79,7 +79,7 @@
                                                 <a href="#" title="Remove" class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
                                             </td>
                                             <td class="cart-price cart-flex-item text-center small-hide">
-                                                <span class="money fw-500">$ {{ value.price|multiply:value.quantity }}</span>
+                                                <span class="td-money fw-500">₹ {{ value.price|multiply:value.quantity }}</span>
                                             </td>
                                         </tr>
                                         {% endfor %}
@@ -87,7 +87,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td colspan="3" class="text-start"><a href="#" class="btn btn-outline-secondary btn-sm cart-continue"><i class="icon anm anm-angle-left-r me-2 d-none"></i> Continue shopping</a></td>
+                                            <td colspan="3" class="text-start"><a href="{% url "web:product" %}" class="btn btn-outline-secondary btn-sm cart-continue"><i class="icon anm anm-angle-left-r me-2 d-none"></i> Continue shopping</a></td>
                                             <td colspan="3" class="text-end">
                                                 <button type="submit" href="{% url 'web:cart_clear' %}" name="clear" class="btn btn-outline-secondary btn-sm small-hide"><i class="icon anm anm-times-r me-2 d-none"></i> Clear Shoping Cart</button>
                                                 <button type="submit" name="update" class="btn btn-secondary btn-sm cart-continue ms-2"><i class="icon anm anm-sync-ar me-2 d-none"></i> Update Cart</button>
@@ -108,30 +108,23 @@
                                 <div class="cart-order-detail cart-col">
                                     <div class="row g-0 border-bottom pb-2">
                                         <span class="col-6 col-sm-6 cart-subtotal-title"><strong>Subtotal</strong></span>
-                                        <span class="col-6 col-sm-6 cart-subtotal-title cart-subtotal text-end"><span class="money">$226.00</span></span>
+                                        <span class="col-6 col-sm-6 cart-subtotal-title cart-subtotal text-end"><span id="total-price" class="money">0₹</span></span>
                                     </div>
-                                    <div class="row g-0 border-bottom py-2">
-                                        <span class="col-6 col-sm-6 cart-subtotal-title"><strong>Coupon Discount</strong></span>
-                                        <span class="col-6 col-sm-6 cart-subtotal-title cart-subtotal text-end"><span class="money">-$25.00</span></span>
-                                    </div>
-                                    <div class="row g-0 border-bottom py-2">
-                                        <span class="col-6 col-sm-6 cart-subtotal-title"><strong>Tax</strong></span>
-                                        <span class="col-6 col-sm-6 cart-subtotal-title cart-subtotal text-end"><span class="money">$10.00</span></span>
-                                    </div>
+                                    
                                     <div class="row g-0 border-bottom py-2">
                                         <span class="col-6 col-sm-6 cart-subtotal-title"><strong>Shipping</strong></span>
                                         <span class="col-6 col-sm-6 cart-subtotal-title cart-subtotal text-end"><span class="money">Free shipping</span></span>
                                     </div>
                                     <div class="row g-0 pt-2">
                                         <span class="col-6 col-sm-6 cart-subtotal-title fs-6"><strong>Total</strong></span>
-                                        <span class="col-6 col-sm-6 cart-subtotal-title fs-5 cart-subtotal text-end text-primary"><b class="money">$311.00</b></span>
+                                        <span class="col-6 col-sm-6 cart-subtotal-title fs-5 cart-subtotal text-end text-primary"><b id="total_price" class="money">0</b></span>
                                     </div>
 
                                     <p class="cart-shipping mt-3">Shipping &amp; taxes calculated at checkout</p>
                                     <p class="cart-shipping fst-normal freeShipclaim"><i class="me-2 align-middle icon anm anm-truck-l"></i><b>FREE SHIPPING</b> ELIGIBLE</p>
                                     
                                     <a href="{% url 'web:checkout'  %}" id="cartCheckout" class="btn btn-lg my-4 checkout w-100">Proceed To Checkout</a>
-                                    <div class="paymnet-img text-center"><img src="{% static 'web/images/icons/safepayment.png'%}" alt="Payment" width="299" height="28" /></div>
+                                    <div class="paymnet-img text-center"></div>
                                 </div>                               
                             </div>
                         </div>
@@ -145,6 +138,61 @@
             <!-- End Body Container -->
 
 
-
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Get all cart rows with item prices
+                    const cartRows = document.querySelectorAll(".cart-row-td");
+                    
+                    // Initialize the total price to 0
+                    let totalPrice = 0;
+                    
+                    // Loop through each cart row
+                    cartRows.forEach(function(row) {
+                        // Find the price element within the row
+                        const priceElement = row.querySelector(".td-money");
+                        
+                        // Extract the price as a string and remove "$" or any other currency symbols
+                        const priceText = priceElement.textContent.trim().replace(/[^0-9.]/g, "");
+                        
+                        // Parse the price as a float
+                        const itemPrice = parseFloat(priceText);
+                        
+                        // Add the item price to the total price
+                        totalPrice += itemPrice;
+                    });
+                    
+                    // Display the total price in the designated element
+                    const totalElement = document.getElementById("total-price");
+                    totalElement.textContent = "₹" + totalPrice.toFixed(2); // Format as currency with 2 decimal places
+                });
+            </script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Get all cart rows with item prices
+                    const cartRows = document.querySelectorAll(".cart-row-td");
+                    
+                    // Initialize the total price to 0
+                    let totalPrice = 0;
+                    
+                    // Loop through each cart row
+                    cartRows.forEach(function(row) {
+                        // Find the price element within the row
+                        const priceElement = row.querySelector(".td-money");
+                        
+                        // Extract the price as a string and remove "$" or any other currency symbols
+                        const priceText = priceElement.textContent.trim().replace(/[^0-9.]/g, "");
+                        
+                        // Parse the price as a float
+                        const itemPrice = parseFloat(priceText);
+                        
+                        // Add the item price to the total price
+                        totalPrice +=itemPrice ;
+                    });
+                    
+                    // Display the total price in the designated element
+                    const totalElement = document.getElementById("total_price");
+                    totalElement.textContent = "₹" + totalPrice.toFixed(2); // Format as currency with 2 decimal places
+                });
+            </script>
 
 {% endblock content %}

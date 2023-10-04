@@ -44,14 +44,14 @@
                             <label class="label d-none"><span>Search</span></label>
                             <!--Search Field-->
                             <div class="d-flex searchField">
-                               <div class="search-category">
+                               {% comment %} <div class="search-category">
                                     <select class="rgsearch-category border-0">
                                         <option value="">All Categories</option>
                                         {% for category in categories %}
                                         <option value="{{ category.id }}">{{ category.category_title }}</option>
                                         {% endfor %}
                                     </select>
-                                </div> 
+                                </div>  {% endcomment %}
                                 <div class="input-box d-flex fl-1">
                                     <input type="text" name="search" class="form-control input-group-field search-input border-0" placeholder="Search here..." value="" />
                                     <button type="submit" class="input-group-btn text-link search-submit border-0"><i class="hdr-icon icon anm anm-search-l"></i></button>

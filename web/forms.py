@@ -34,5 +34,6 @@ class CheckoutForm(forms.ModelForm):
             "country": widgets.TextInput(attrs={"class": "required form-control","placeholder": "Type Your country",}),
             "state": widgets.TextInput(attrs={"class": "required form-control","placeholder": "Type Your State",}),
             "town": widgets.TextInput(attrs={"class": "required form-control","placeholder": "Type Your town",}),
+            
         }
 

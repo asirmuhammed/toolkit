@@ -9,12 +9,20 @@ from .models import Blog
 from .models import Gallery
 from .models import Category
 from .models import Product
+from cart.cart import Cart
 from django.shortcuts import render, redirect
 from web.models import Product
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from django.db.models import Q
+from django.http import JsonResponse
+from django.conf import settings
+from django.core.mail import send_mail
+
+from django.core.mail import send_mail
+import requests
+import urllib.parse
 
 
 
@@ -117,32 +125,66 @@ def cart(request):
     return render(request, "web/cart.html", context)
 
 def checkout(request):
+    cart = Cart(request)
+    total_price = cart.get_total_price()
     form = CheckoutForm(request.POST or None)
+    
     if request.method == "POST":
         if form.is_valid():
-            form.save()
-        messages.success(request,"succsessfully saved")
-        return redirect('/checkout')
-    else:
-        context = {
-            "is_checkout": True,
-            "form": form,
-        }
+            # Save the form data to the Checkout model
+            checkout_instance = form.save()
+
+            # Send an email with the form data
+            subject = 'Checkout Information'
+            message = f'First Name: {checkout_instance.firstname}\n' \
+                      f'Last Name: {checkout_instance.lastname}\n' \
+                      f'Address: {checkout_instance.address}\n' \
+                      f'subaddress: {checkout_instance.subaddress}\n' \
+                      f'postcode: {checkout_instance.postcode}\n' \
+                      f'country: {checkout_instance.country}\n' \
+                      f'state: {checkout_instance.state}\n' \
+                      f'town: {checkout_instance.town}\n' \
+                      
+                    
+                    
+                      # Add more fields as needed
+
+            from_email = 'asirm0658@gmail.com'  # Sender's email
+            recipient_list = ['asirm0658@gmail.com']  # Recipient's email
+
+            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+            
+            whatsapp_api_url = 'https://api.whatsapp.com/send'
+            phone_number = '919656949008'
+            encoded_message = urllib.parse.quote(message)
+            whatsapp_url = f'{whatsapp_api_url}?phone={phone_number}&text={encoded_message}'
+
+            messages.success(request, "Successfully saved")
+            return redirect(whatsapp_url)
+        else:
+            messages.error(request, "Form is not valid")
+
+    context = {
+        "is_checkout": True,
+        "form": form,
+        'total': total_price
+    }
     return render(request, "web/checkout.html", context)
 
 
 
 
-
-
-
+# def cart_add(request, id):
+#     cart = Cart(request)
+#     product = Product.objects.get(id=id)
+#     cart.add(product=product)
+#     return redirect("/")
 
 def cart_add(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.add(product=product)
     return redirect("/")
-
 
 
 def item_clear(request, id):
@@ -172,9 +214,21 @@ def item_decrement(request, id):
 def cart_clear(request):
     cart = Cart(request)
     cart.clear()
-    return redirect("web:cart")
+    return redirect("web:cart_clear")
 
 
 
 def cart_detail(request):
     return render(request, 'web/cart_detail.html')
+
+
+
+
+
+
+
+
+
+
+
+

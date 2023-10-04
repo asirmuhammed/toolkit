@@ -192,7 +192,7 @@
                                         <h2 class="product-main-title">{{product.product_name}}</h2>
                                         <!-- Product Price -->
                                         <div class="product-price d-flex-center justify-content-center my-3">
-                                            <span class="price old-price">{{product.product_del_price}}$</span><span class="price">{{product.product_price}}$</span>
+                                            <span class="price old-price">{{product.product_del_price}}₹</span><span class="price">{{product.product_price}}₹</span>
                                         </div>
                                         <!-- End Product Price -->
                                         <!-- Product Reviews -->
@@ -221,16 +221,16 @@
                                             <div class="infolinks w-100 d-flex-center justify-content-center mb-3">
                                                 <a class="text-link wishlist" href="wishlist-style1.html"><i class="icon anm anm-heart-l me-2"></i> <span>Add to Wishlist</span></a>
                                                 <a class="text-link compare" href="compare-style1.html"><i class="icon anm anm-sync-ar me-2"></i> <span>Add to Compare</span></a>
-                                                <a href="#shippingInfo-modal" class="text-link shippingInfo" data-bs-toggle="modal" data-bs-target="#shippingInfo_modal"><i class="icon anm anm-paper-l-plane me-2"></i> <span>Delivery &amp; Returns</span></a>
-                                                <a href="#productInquiry-modal" class="text-link emaillink me-0" data-bs-toggle="modal" data-bs-target="#productInquiry_modal"><i class="icon anm anm-question-cil me-2"></i> <span>Enquiry</span></a>
+                                                <a href="#shippingInfo-modal" class="text-link shippingInfo" data-bs-toggle="" data-bs-target=""><i class="icon anm anm-paper-l-plane me-2"></i> <span>Delivery &amp; Returns</span></a>
+                                                <a href="#productInquiry-modal" class="text-link emaillink me-0" data-bs-toggle="" data-bs-target="l"><i class="icon anm anm-question-cil me-2"></i> <span>Enquiry</span></a>
                                             </div>
                                             <!-- End Product Info link -->
                                             <!-- Product Quantity -->
                                             <div class="product-form-quantity d-flex-center">
                                                 <div class="qtyField">
-                                                    <a class="qtyBtn minus" href="#;"><i class="icon anm anm-minus-r"></i></a>
+                                                    <a class="qtyBtn minus" href="#"><i class="icon anm anm-minus-r"></i></a>
                                                     <input type="text" name="quantity" value="1" class="product-form-input qty" />
-                                                    <a class="qtyBtn plus" href="#;"><i class="icon anm anm-plus-r"></i></a>
+                                                    <a class="qtyBtn plus" href="#"><i class="icon anm anm-plus-r"></i></a>
                                                 </div>
                                             </div>
                                             <!-- End Product Quantity -->
@@ -243,7 +243,8 @@
                                             <!-- Product Add -->
                                             <!-- Product Buy -->
                                             <div class="product-form-submit buyit fl-1 ms-3" >
-                                                <button type="submit"class="btn btn-primary proceed-to-checkout"><span><a href="{% url "web:checkout" %}">Buy now</a></span></button>
+                                                <a href="{% url "web:checkout" %}">
+                                                <button type="submit"class="btn btn-primary proceed-to-checkout"><span><a href="{% url "web:checkout" %}">Buy now</a></span></button></a>
                                             </div>
                                             <!-- End Product Buy -->
                                         </div>
