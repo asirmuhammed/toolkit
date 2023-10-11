@@ -1,6 +1,7 @@
 
 {% extends "web/partials/base.html" %}
 {% load static %}
+<title>{% block title %}About{% endblock title %}</title>
 {% block content %}
 
 
@@ -15,9 +16,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between align-items-center">
-                                <div class="page-title"><h1>About Us Style1</h1></div>
+                                <div class="page-title"><h1>About Us</h1></div>
                                 <!--Breadcrumbs-->
-                                <div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a><span class="title"><i class="icon anm anm-angle-right-l"></i>Pages</span><span class="main-title fw-bold"><i class="icon anm anm-angle-right-l"></i>About Us Style1</span></div>
+                                <div class="breadcrumbs"><a href="{% url "web:index" %}" title="Back to the home page">Home</a><span class="title"><i class="icon anm anm-angle-right-l"></i>about us</span></div>
                                 <!--End Breadcrumbs-->
                             </div>
                         </div>

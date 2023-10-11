@@ -1,5 +1,6 @@
 {% extends "web/partials/base.html" %} 
-{% load static %} 
+{% load static %}
+<title>{% block title %}toolkit{% endblock title %}</title>
 {% block content %}
 
 <!--Page Wrapper-->
@@ -181,7 +182,7 @@
                                           <a href="{% url 'web:product-detail'  product.id %}" class="product-img"><img class="blur-up lazyload" src="{{product.product_image.url}}" data-src="{{product.product_image.url}}" alt="Product" title="Product" width="625" height="781" /></a>
                                           <div class="button-set style2">
                                               <!--Cart Button-->
-                                              <a href="{% url 'web:cart_add' product.id %}" class="btn-icon addtocart quick-shop-modal" >
+                                              <a href="{% url 'web:cart_add_qty' id=product.id qty=1 %}" class="btn-icon addtocart quick-shop-modal" >
                                                   <span class="icon-wrap d-flex-justify-center h-100 w-100" title="Quick Shop"><i class="icon anm anm-cart-l"></i><span class="text">Quick Shop</span></span>
                                               </a>
                                               <!--End Cart Button-->
@@ -207,7 +208,7 @@
                                           <!--End Product Vendor-->
                                           <!-- Product Name -->
                                           <div class="product-name">
-                                              <a href="product-layout1.html">{{product.product_name}}</a>
+                                              <a href="{% url 'web:product-detail' product.id %}">{{product.product_name}}</a>
                                           </div>
                                           <!-- End Product Name -->
                                           <!-- Product Price -->
@@ -298,7 +299,7 @@
                   </li>
                 </ul>
                 <h2 class="h3 m-0 text-none">
-                  <a href="blog-details.html">{{obj.title}}</a>
+                  <a href="{% url 'web:blog_detail' obj.id %}">{{obj.title}}</a>
                 </h2>
                 <div
                   class="blog-bottom d-flex-center justify-content-between mt-3"
@@ -308,9 +309,7 @@
                     class="text-link text-decoration-none text-uppercase"
                     >Read More<i class="icon anm anm-arw-right ms-2"></i
                   ></a>
-                  <a href="#" class="text-link text-decoration-none"
-                    ><i class="icon anm anm-comments-l me-2"></i>12</a
-                  >
+                  
                 </div>
               </div>
             </div>

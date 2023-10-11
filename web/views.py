@@ -187,6 +187,12 @@ def cart_add(request, id):
     return redirect("/")
 
 
+def cart_add_qty(request, id,qty):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.add(product=product,quantity=qty)
+    return redirect("/")
+
 def item_clear(request, id):
     cart = Cart(request)
     product = Product.objects.get(id=id)
@@ -214,15 +220,12 @@ def item_decrement(request, id):
 def cart_clear(request):
     cart = Cart(request)
     cart.clear()
-    return redirect("web:cart_clear")
+    return redirect("web:cart")
 
 
 
 def cart_detail(request):
     return render(request, 'web/cart_detail.html')
-
-
-
 
 
 

@@ -1,5 +1,6 @@
 {% extends "web/partials/base.html" %} 
-{% load static %} 
+{% load static %}
+<title>{% block title %}cart{% endblock title %}</title> 
 {% load cart_tag %}
 {% block content %}
 
@@ -16,7 +17,7 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between align-items-center">
                                 <div class="page-title"><h1>cart</h1></div>
                                 <!--Breadcrumbs-->
-                                <div class="breadcrumbs"><a href="index.html" title="Back to the home page">Home</a><span class="main-title"><i class="icon anm anm-angle-right-l"></i>Your Shopping Cart Style1</span></div>
+                                <div class="breadcrumbs"><a href="{% url 'web:index' %}" title="Back to the home page">Home</a><span class="main-title"><i class="icon anm anm-angle-right-l"></i>Cart</span></div>
                                 <!--End Breadcrumbs-->
                             </div>
                         </div>
@@ -29,10 +30,7 @@
                     <div class="row">
                         <!--Cart Content-->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-8 main-col">
-                            <div class="alert alert-success py-2 alert-dismissible fade show cart-alert" role="alert">
-                                <i class="align-middle icon anm anm-truck icon-large me-2"></i><strong class="text-uppercase">Congratulations!</strong> You've got free shipping!
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                            
                             <!--End Alert msg-->
 
                             <!--Cart Form-->
@@ -89,7 +87,8 @@
                                         <tr>
                                             <td colspan="3" class="text-start"><a href="{% url "web:product" %}" class="btn btn-outline-secondary btn-sm cart-continue"><i class="icon anm anm-angle-left-r me-2 d-none"></i> Continue shopping</a></td>
                                             <td colspan="3" class="text-end">
-                                                <button type="submit" href="{% url 'web:cart_clear' %}" name="clear" class="btn btn-outline-secondary btn-sm small-hide"><i class="icon anm anm-times-r me-2 d-none"></i> Clear Shoping Cart</button>
+                                                {% comment %} <a href=""></a> {% endcomment %}
+                                                <td colspan="3" class="text-start"><a href="{% url "web:cart_clear" %}" class="btn btn-outline-secondary btn-sm cart-continue"><i class="icon anm anm-angle-left-r me-2 d-none"></i> Clear cart</a></td>
                                                 
                                             </td>
                                         </tr>

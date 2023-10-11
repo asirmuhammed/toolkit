@@ -7,16 +7,18 @@
         <meta name="description" content="description">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Title Of Site -->
-        <title>toolkit</title>
+        <title>{% block title %}toolkit{% endblock title %}</title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="{% static 'web/images/favicon.png' %}" />
         <!-- Plugins CSS -->
         <link rel="stylesheet" href="{% static 'web/css/plugins.css' %}">
+        <link rel="stylesheet" href="{% static 'web\css\custom.css' %}">
         <!-- Main Style CSS -->
         <link rel="stylesheet" href="{% static 'web/css/style-min.css' %}">
         <link rel="stylesheet" href="{% static 'web/css/responsive.css' %}">
          <!-- sweet alert cdn -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
     </head>
 
     <body class="template-index index-demo5">

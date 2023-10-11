@@ -1,5 +1,6 @@
 {% extends "web/partials/base.html" %} 
-{% load static %} 
+{% load static %}
+<title>{% block title %}checkout{% endblock title %}</title> 
 {% block content %}
 
 
@@ -79,6 +80,13 @@
                                                         
                                                     
                                                 </div>
+
+                                                <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
+                                                    <label for="address_province" class="form-label">Town / City <span class="required">*</span></label>
+                                                    {{form.order_product}}
+                                                        
+                                                    
+                                                </div>
                                          
                                             
                                         </fieldset>
@@ -113,6 +121,48 @@
                             </div>
                             <!--Cart Summary-->
                             </div>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-12 col-12 mb-4 mb-md-0">
+                            <!--Order Summary-->
+                            <div class="block order-summary">
+                                <div class="block-content">
+                                    <h3 class="title mb-3 text-uppercase">Order Summary</h3>
+                                    <div class="table-responsive-sm table-bottom-brd order-table"> 
+                                        <table class="table table-hover align-middle mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="action">&nbsp;</th>
+                                                    <th class="text-start">Image</th>
+                                                    <th class="text-start proName">Product</th>
+                                                    <th class="text-center">Qty</th>
+                                                    <th class="text-center">Price</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for key,value in request.session.cart.items %}
+                                                <tr>
+                                                    <td class="text-center cart-delete"><a href="{% url 'web:item_clear' id=value.product_id %}" class="cart-remove remove-icon position-static" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove to Cart"><i class="icon anm anm-times-r"></i></a></td>
+                                                    <td class="text-start"><a href="product-layout1.html" class="thumb"><img class="rounded-0 blur-up lazyload" data-src="{{ value.image}}" src="{{ value.image}}" alt="product" title="product" width="120" height="170" /></a></td>
+                                                    <td class="text-start proName">
+                                                        <div class="list-view-item-title">
+                                                            <a href="product-layout1.html">{{value.name}}</a>
+                                                        </div>
+                                                        <div class="cart-meta-text">
+                                                            Categories: {{value.category}}
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center">{{value.quantity}}</td>
+                                                    <td class="text-center">{{value.price}}</td>
+                                                    
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Order Summary-->
                         </div>
                         
                     </form>

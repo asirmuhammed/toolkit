@@ -18,7 +18,8 @@ class Contact(models.Model):
 class Blog(models.Model):
     author=models.CharField(max_length=20,)
     title=models.CharField(max_length=225,)
-    date = models.DateField(auto_now=True)
+    # date = models.DateField(auto_now=True)
+    date = models.DateField()
     image =models.ImageField()
     # ppoi = PPOIField('Image PPOI')
     content= HTMLField(blank=True, null=True)
@@ -65,6 +66,7 @@ class Checkout(models.Model):
     country=models.CharField(max_length=50)
     state=models.CharField(max_length=50)
     town=models.CharField(max_length=50)
+    # order_product=models.CharField(max_length=100)
     
     
     def __str__(self):
