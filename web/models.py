@@ -66,7 +66,6 @@ class Checkout(models.Model):
     country=models.CharField(max_length=50)
     state=models.CharField(max_length=50)
     town=models.CharField(max_length=50)
-    # order_product=models.CharField(max_length=100)
     
     
     def __str__(self):
